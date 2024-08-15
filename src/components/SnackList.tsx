@@ -17,7 +17,6 @@ export default function SnackList() {
     else {
       setSpinning(true)
       setButtonLabel("Stop")
-      decideWinner()
     }
   } 
 
