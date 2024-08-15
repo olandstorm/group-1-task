@@ -6,7 +6,7 @@ export default function SnackList() {
   const [spinning, setSpinning] = useState(false) //Standard snurrar inte
   const [buttonLabel, setButtonLabel] = useState("Spin")
   const [winner, setWinner] = useState(false)
-  let winningItem: ISnack = {id: "", name: "Noname", imageUrl: "", price: 0};
+  const [winningItem, setWinningItem] =useState<ISnack>({id: "", name: "Noname", imageUrl: "", price: 0});
 
   function spinTheWheel() {
     if (spinning) {
@@ -21,7 +21,9 @@ export default function SnackList() {
   } 
 
   const decideWinner = () => {
-    winningItem = getRandomItem(snacks)
+    setWinningItem (getRandomItem(snacks))
+    console.log(winningItem);
+    
     setWinner(true)
     // Trigger div that shows winner? 
     // Trigger reload of list? 
