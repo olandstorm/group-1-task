@@ -43,6 +43,7 @@ export default function SnackList() {
     <>
     {winner ? (<div>
       <h2>The snack of the day is: </h2>
+      <img src={winningItem.imageUrl}></img>
       <p>{winningItem.name}</p>
       <button onClick={closeTheWinnerDiv}>Close</button>
     </div>) : (<div><ul>{
