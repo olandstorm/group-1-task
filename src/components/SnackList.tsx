@@ -2,6 +2,7 @@ import { useState } from "react";
 import { snacks } from "../assets/snacks.tsx";
 import { ISnack } from "../assets/ISnack.tsx";
 
+
 export default function SnackList() {
   const [spinning, setSpinning] = useState(false); //Standard snurrar inte
   const [buttonLabel, setButtonLabel] = useState("Spin");
@@ -12,15 +13,15 @@ export default function SnackList() {
     imageUrl: "",
     price: 0,
   });
-
+  
   function spinTheWheel() {
     if (spinning) {
       decideWinner();
       setSpinning(false);
-      setButtonLabel("Spin");
+      setButtonLabel("Spin");      
     } else {
       setSpinning(true);
-      setButtonLabel("Stop");
+      setButtonLabel("Stop");      
     }
   }
 
@@ -47,23 +48,20 @@ export default function SnackList() {
       {winner ? (
         <div>
           <h2>The snack of the day is: </h2>
-          <img src={winningItem.imageUrl}></img>
-          <p>{winningItem.name}</p>
-          <button onClick={closeTheWinnerDiv}>Close</button>
+          <img src={winningItem.imageUrl} className="winning-item"></img>
+          <p className="winning-item-name">{winningItem.name}</p>
+          <button className="button-close" onClick={closeTheWinnerDiv}>Close</button>
         </div>
       ) : (
-        <div>
+        <div className="image-container">
           <ul>
             {snacks.map((snack, i) => (
               <li key={i}>
-                <img src={snack.imageUrl} alt={snack.name}></img>
-                <span>
-                  Name: {snack.name}, Price: {snack.price} kr
-                </span>
+                <img src={snack.imageUrl} alt={snack.name} className={spinning? "snack-image" : "hidden"}></img>
               </li>
             ))}
           </ul>
-          <button onClick={spinTheWheel}>{buttonLabel}</button>
+          <button className="button-spin" onClick={spinTheWheel}>{buttonLabel}</button>
         </div>
       )}
     </>

@@ -11,21 +11,77 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+      overflow: hidden;
 }
 
 ul {
   display: flex;
   flex-direction: row;
   column-gap: 10px;
+
 }
 
 li {
   list-style: none;
+
 }
 
 img {
-  width: 200px;
-  height: auto;
+  height: 300px; 
+  width: 300px;
+  object-fit: cover;
+}
+
+.hidden {
+  display: none;
+}
+
+.snack-image {
+  animation: slide 1s linear infinite alternate;
+  /* animation: slide 1s steps(7) infinite;  */
+}
+
+@keyframes slide {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(calc(-250px * 7)); }
+} 
+
+@keyframes flip {
+	0% {
+		transform: perspective(400px) rotateY(0);
+		animation-timing-function: ease-out;
+	}
+	40% {
+		transform: perspective(400px) translateZ(150px) rotateY(170deg);
+		animation-timing-function: ease-out;
+	}
+	50% {
+		transform: perspective(400px) translateZ(150px) rotateY(190deg) scale(1);
+		animation-timing-function: ease-in;
+	}
+	80% {
+		transform: perspective(400px) rotateY(360deg) scale(.95);
+		animation-timing-function: ease-in;
+	}
+	100% {
+		transform: perspective(400px) scale(1);
+		animation-timing-function: ease-in;
+	}
+}
+
+.winning-item {
+  animation: flip 0.8s ease;
+  filter: drop-shadow(0 0 0.75rem rgb(0, 0, 0));
+}
+
+.winning-item-name {
+  color: white; 
+  animation: flip 0.8s ease;
+  filter: drop-shadow(0 0 0.75rem rgb(0, 0, 0));
+  font-size: 2em;
+  font-weight: bold;
+  text-transform: capitalize;
 }
 
 a {
@@ -59,16 +115,26 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #ccb743;
+  color: black; 
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  background-color: #ff8520;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.button-close {
+  background-color: #730703;
+  color: white; 
+}
+
+.button-close:hover {
+  background-color: #954808;
 }
 
 @media (prefers-color-scheme: light) {
